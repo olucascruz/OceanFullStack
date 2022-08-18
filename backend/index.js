@@ -4,17 +4,15 @@ const {MongoClient} = require("mongodb");
 
 
 
-const url = "mongodb+srv://admin:LdQHrR3iAM9u4Mtw@cluster0.ih1f4.mongodb.net";
+const url = "mongodb+srv://admin:etxhDcmOdBNfVTIK@cluster0.qnq47fz.mongodb.net/";
 const dbName = "jornada_fullstack_lca";
 
 async function main(){
 
   console.log("conectando com o db");
-  /*
   const client = await MongoClient.connect(url);
   const db = client.db(dbName);
   const collection = db.collection("acollection");
-  */
   console.log("db conectado!");
 
   const app = express();

@@ -10,9 +10,11 @@ const dbName = "jornada_fullstack_lca";
 async function main(){
 
   console.log("conectando com o db");
+  /*
   const client = await MongoClient.connect(url);
   const db = client.db(dbName);
   const collection = db.collection("acollection");
+  */
   console.log("db conectado!");
 
   const app = express();

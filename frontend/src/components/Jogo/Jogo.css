@@ -7,7 +7,7 @@
     width: 20vh;
     position: absolute;
     top:3vh;
-    left:50%;
+    animation: mover-direita-para-esquerda infinite 8s linear
 }
 .player{
     width: 10vh;

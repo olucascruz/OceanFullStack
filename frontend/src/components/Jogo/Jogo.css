@@ -4,20 +4,31 @@
 }
 
 .nuvens{
-    width: 200px;
+    width: 20vh;
     position: absolute;
-    top:30px;
+    top:3vh;
     left:50%;
 }
 .player{
     width: 10vh;
     position: absolute;
-    top:80vh;
-    left:10vh;
+    bottom: 30px;
+    left: 50px;
 }
 
 .cano{
     width: 10vh;
     position: absolute;
-    top:80vh;
+    bottom: 30px;
+    right: 50px;
+}
+
+.chao{
+    position: absolute;
+    bottom: 0px;
+    height: 30px;
+    width: 100%;
+   
+    background: linear-gradient(limegreen 10%, #654321 90%);
+
 }

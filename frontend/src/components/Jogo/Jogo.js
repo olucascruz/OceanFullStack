@@ -7,7 +7,7 @@ function Jogo(){
     return <div className="jogo"> 
     <img className="nuvens" src={clouds} alt="nuvens"/>
 
-    <img className="player" src={player} alt="player"/>
+    <img className="player player-pulo" src={player} alt="player"/>
 
     <img className="cano" src={pipe} alt="cano"/>
 

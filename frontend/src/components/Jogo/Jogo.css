@@ -13,14 +13,33 @@
     animation: mover-direita-para-esquerda infinite 8s linear
 }
 .player{
-    width: 10vh;
+    height: 10vh;
     position: absolute;
     bottom: 30px;
     left: 50px;
 }
 
+.player-pulo{
+    animation: player-pulo 0.7s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes player-pulo{
+    from{
+        bottom: 30px;
+    }
+    
+    50%{
+        bottom: 120px;
+    }
+
+    to{
+        bottom: 30px;
+    }
+}
+
 .cano{
-    width: 10vh;
+    width: 6vh;
     position: absolute;
     bottom: 30px;
     right: 50px;

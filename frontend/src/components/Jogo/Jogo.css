@@ -20,8 +20,7 @@
 }
 
 .player-pulo{
-    animation: player-pulo 0.7s;
-    animation-iteration-count: infinite;
+    animation: player-pulo 0.8s;
 }
 
 @keyframes player-pulo{

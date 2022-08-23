@@ -1,6 +1,9 @@
 .jogo{
     background: #9BE5E4;
     height: 100vh;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
 }
 
 .nuvens{

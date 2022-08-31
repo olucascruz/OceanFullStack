@@ -12,6 +12,11 @@
     top:3vh;
     animation: mover-direita-para-esquerda infinite 8s linear
 }
+
+.parar-animacao{
+    animation-play-state: paused;
+}
+
 .player{
     height: 10vh;
     position: absolute;

@@ -1,12 +1,21 @@
 import "./Jogo.css";
 import cloudsimg from "../../assets/clouds.png"
 import playerimg from "../../assets/mario.gif"
+import gameOverimg from "../../assets/game-over.png"
 import pipeimg from "../../assets/pipe.png"
-import React, {useRef, useState} from "react"
+import React, {useEffect, useRef, useState} from "react"
+
 
 function Jogo(){
     const playerRef = useRef();
     const canoRef = useRef();
+
+    //Estado 'estaPulando'
+    const [estaPulando, setEstaPulando] = useState(false);
+    const [pontos, setPontos] = useState(0);
+    const [estaMorto, setEstaMorto] = useState(false);
+    let playerClassName = "player";
+
 
     function colisao(){
         const player = playerRef.current;
@@ -25,14 +34,26 @@ function Jogo(){
     }
 
     setInterval(()=>{
-        const valor = colisao();
+        const colisaoCano = colisao();
 
-        console.log("colidiu?", valor)
+        if(!colisaoCano){
+            return;
+        }
+
+        setEstaMorto(true);
     }, 100);
 
-    //Estado 'estaPulando'
-    const [estaPulando, setEstaPulando] = useState(false);
-    let playerClassName = "player";
+    useEffect(()=>{
+       const interval = setInterval(()=>{
+            if(estaMorto){
+                return;
+            }
+            setPontos(pontos + 1);
+        }, 500);
+
+        return ()=> clearInterval(interval);
+    }, [estaMorto, pontos])
+    
 
     document.onkeydown = function(){
         if(!estaPulando){
@@ -47,12 +68,15 @@ function Jogo(){
         }, 700);
      }
 
+     const playerImage = estaMorto ? gameOverimg : playerimg;
+     const pararAnimacao = estaMorto? "parar-animacao" : "";
+
     return <div className="jogo"> 
     <img className="nuvens" src={cloudsimg} alt="nuvens"/>
 
-    <img ref={playerRef} className={playerClassName} src={playerimg} alt="player"/>
 
-    <img ref={canoRef} className="cano" src={pipeimg} alt="cano"/>
+    <img ref={canoRef} className={"cano "+pararAnimacao} src={pipeimg} alt="cano"/>
+    <img ref={playerRef} className={playerClassName} src={playerImage} alt="player"/>
 
     <div className="chao"></div>
     </div>;

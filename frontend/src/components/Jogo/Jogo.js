@@ -72,8 +72,10 @@ function Jogo(){
      const pararAnimacao = estaMorto? "parar-animacao" : "";
 
     return <div className="jogo"> 
-    <img className="nuvens" src={cloudsimg} alt="nuvens"/>
 
+    <span>{"Pontos: "+pontos}</span>
+
+    <img className="nuvens" src={cloudsimg} alt="nuvens"/>
 
     <img ref={canoRef} className={"cano "+pararAnimacao} src={pipeimg} alt="cano"/>
     <img ref={playerRef} className={playerClassName} src={playerImage} alt="player"/>

@@ -6,7 +6,7 @@ import pipeimg from "../../assets/pipe.png"
 import React, {useEffect, useRef, useState} from "react"
 
 
-function Jogo(){
+function Jogo(props){
     const playerRef = useRef();
     const canoRef = useRef();
 
@@ -32,16 +32,22 @@ function Jogo(){
             );
 
     }
+    useEffect(()=>{
+        
+        const interval = setInterval(()=>{
+            const colisaoCano = colisao();
+    
+            if(!colisaoCano){
+                return;
+            }
+    
+            setEstaMorto(true);
+            props.onDie();
+        }, 100);
 
-    setInterval(()=>{
-        const colisaoCano = colisao();
-
-        if(!colisaoCano){
-            return;
-        }
-
-        setEstaMorto(true);
-    }, 100);
+        return () =>clearInterval(interval)
+    }, [estaMorto])
+    
 
     useEffect(()=>{
        const interval = setInterval(()=>{

@@ -74,7 +74,7 @@ async function main(){
     });
 
   app.listen(process.env.PORT || 3333, ()=>{
-    console.log("Aplicação rodando em http://localhost:3000")
+    console.log("Aplicação rodando em http://localhost:3333")
   });
 }
 

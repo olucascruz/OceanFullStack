@@ -37,16 +37,18 @@ function Jogo(props){
         const interval = setInterval(()=>{
             const colisaoCano = colisao();
     
-            if(!colisaoCano){
+            if(!colisaoCano || estaMorto){
                 return;
             }
-    
+
             setEstaMorto(true);
-            props.onDie();
+            props.onDie()
+
         }, 100);
 
         return () =>clearInterval(interval)
-    }, [estaMorto])
+    }, 
+    [estaMorto, props]);
     
 
     useEffect(()=>{
@@ -55,10 +57,11 @@ function Jogo(props){
                 return;
             }
             setPontos(pontos + 1);
+            props.onPontos(pontos + 1);
         }, 500);
 
         return ()=> clearInterval(interval);
-    }, [estaMorto, pontos])
+    }, [estaMorto, pontos, props])
     
 
     document.onkeydown = function(){

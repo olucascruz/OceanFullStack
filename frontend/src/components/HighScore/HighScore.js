@@ -43,6 +43,7 @@ function HighScore(props){
         const body = await response.json();
 
         console.log(body)
+        document.location.reload(true);
     }
 
     return <div className="HighScore">

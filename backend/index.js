@@ -1,5 +1,5 @@
 const express = require('express');
-const {MongoClient} = require("mongodb");
+const {MongoClient, ObjectId} = require("mongodb");
 const cors = require("cors");
 
 
@@ -50,7 +50,7 @@ async function main(){
       const itens = await collection
       .find()
       .sort({ pontos: -1 })
-      .limit(2)
+      .limit(10)
       .toArray();
       res.send(itens);
 
@@ -69,6 +69,22 @@ async function main(){
       // });
 
       await collection.insertOne(item);
+
+      res.send(item)
+    });
+
+    app.delete("/pontuacoes", async function(req, res){
+      const item = req.body;
+      // console.log(item);
+
+      //Adicionar o item na lista
+      // lista.push({
+      //   id:lista.length+1,
+      //   nome: item.nome,
+      //   pontos: item.pontos
+      // });
+
+      // await collection.remove(item);
 
       res.send(item)
     });

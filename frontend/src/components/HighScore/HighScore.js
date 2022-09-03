@@ -34,13 +34,15 @@ function HighScore(props){
 
         const response = await fetch("http://localhost:3333/pontuacoes", {
             method: "POST",
-            body: JSON.stringify({nome: name, ponstos:props.ponstos}),
+            body: JSON.stringify({"nome": name, "pontos":props.pontos}),
             headers:{
                 "Content-type": "application/json",
             }, 
          });
 
         const body = await response.json();
+
+        console.log(body)
     }
 
     return <div className="HighScore">
@@ -56,7 +58,7 @@ function HighScore(props){
         <div>
             <h2>Registre sua pontuação!</h2>
             <form onSubmit={salvarPontuacao}>
-                 <input type="text" placeholder="Digite o seu nome..." />
+                 <input type="text" name="name" placeholder="Digite o seu nome..." />
                  <input type="submit" value="Enviar" />
             </form>
         </div>

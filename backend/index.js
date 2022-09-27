@@ -21,14 +21,7 @@ async function main(){
   app.use(cors());
 // Sinalizar o uso de JSON no body 
   app.use(express.json());
-  app.get('/', function (req, res) {
-    res.send('Hello, World!!!!!!!!');
-  })
-
-  app.get('/oi', function (req, res) {
-      res.send('Hello, Borld!!!!!!!!');
-    })
-
+  
     const lista = [
       {
         id: 1,
@@ -67,32 +60,17 @@ async function main(){
     //Endpoint CREATE - [POST] /pontuacoes
     app.post("/pontuacoes", async function(req, res){
       const item = req.body;
-      // console.log(item);
-
-      //Adicionar o item na lista
-      // lista.push({
-      //   id:lista.length+1,
-      //   nome: item.nome,
-      //   pontos: item.pontos
-      // });
-
+      
       await collection.insertOne(item);
 
       res.send(item)
     });
 
+    //Endpoint DELETE - [POST] /pontuacoes
     app.delete("/pontuacoes", async function(req, res){
       const item = req.body;
-      // console.log(item);
 
-      //Adicionar o item na lista
-      // lista.push({
-      //   id:lista.length+1,
-      //   nome: item.nome,
-      //   pontos: item.pontos
-      // });
-
-      // await collection.remove(item);
+      await collection.remove(item);
 
       res.send(item)
     });

@@ -1,10 +1,12 @@
 const express = require('express');
 const {MongoClient, ObjectId} = require("mongodb");
 const cors = require("cors");
+require("dotenv").config();
 
 
+console.log("token", process.env.URL_BANCO)
 
-const url = "mongodb+srv://admin:etxhDcmOdBNfVTIK@cluster0.qnq47fz.mongodb.net/";
+const url = process.env.URL_BANCO;
 const dbName = "jornada_fullstack_lca";
 
 async function main(){
@@ -47,13 +49,19 @@ async function main(){
 
     //Endpoint READ ALL - [GET] /pontuacoes
     app.get("/pontuacoes", async function(req, res){
-      const itens = await collection
-      .find()
-      .sort({ pontos: -1 })
-      .limit(10)
-      .toArray();
-      res.send(itens);
-
+      try{
+        if(!process.env.URL_BANCO){
+          throw new Error ("Banco não conectado");
+        }
+        const itens = await collection
+        .find()
+        .sort({ pontos: -1 })
+        .limit(10)
+        .toArray();
+        res.send(itens);
+      }catch (err){
+        next(err);
+      }
     });
 
     //Endpoint CREATE - [POST] /pontuacoes

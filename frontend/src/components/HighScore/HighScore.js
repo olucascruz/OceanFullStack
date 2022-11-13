@@ -9,7 +9,7 @@ function HighScore(props){
     useEffect(()=>{
     async function carregarPontuacoes(){
     //   Faz requisição e recebe a resposta
-        const response = await fetch("http://localhost:3333/pontuacoes")
+        const response = await fetch("https://api-ranking.onrender.com/pontuacoes")
     
     //  Extraí o JSON do corpo da resposta   
         const body = await response.json();

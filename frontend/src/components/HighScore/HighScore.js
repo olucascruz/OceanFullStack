@@ -32,7 +32,7 @@ function HighScore(props){
         const form = event.target;
         const name = form.name.value;
 
-        const response = await fetch("http://localhost:3333/pontuacoes", {
+        const response = await fetch("https://api-ranking.onrender.com/pontuacoes", {
             method: "POST",
             body: JSON.stringify({"nome": name, "pontos":props.pontos}),
             headers:{

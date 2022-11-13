@@ -7,14 +7,14 @@ require("dotenv").config();
 console.log("token", process.env.URL_BANCO)
 
 const url = process.env.URL_BANCO;
-const dbName = "jornada_fullstack_lca";
+const dbName = "ranking_db";
 
 async function main(){
 
   console.log("conectando com o db");
   const client = await MongoClient.connect(url);
   const db = client.db(dbName);
-  const collection = db.collection("acollection");
+  const collection = db.collection("ranking");
   console.log("db conectado!");
 
   const app = express();
@@ -22,23 +22,6 @@ async function main(){
 // Sinalizar o uso de JSON no body 
   app.use(express.json());
   
-    const lista = [
-      {
-        id: 1,
-        nome:"Seniorite",
-        pontos: 90
-      },
-      {
-        id:2,
-        nome:"Estrele",
-        pontos: 66
-      },
-      {
-        id:3,
-        nome:"Bobe",
-        pontos: 78
-      }
-    ]
 
     //Endpoint READ ALL - [GET] /pontuacoes
     app.get("/pontuacoes", async function(req, res){

@@ -63,11 +63,11 @@ function Jogo(props){
         return ()=> clearInterval(interval);
     }, [estaMorto, pontos, props])
     
-
     document.onkeydown = function(){
-        if(!estaPulando){
+        if(!estaPulando && !estaMorto){
             setEstaPulando(true);
-        }    
+        }
+       
     };
     
     if(estaPulando){
@@ -84,7 +84,7 @@ function Jogo(props){
 
     <span>{"Pontos: "+pontos}</span>
 
-    <img className="nuvens" src={cloudsimg} alt="nuvens"/>
+    <img className={"nuvens "+pararAnimacao} src={cloudsimg} alt="nuvens"/>
 
     <img ref={canoRef} className={"cano "+pararAnimacao} src={pipeimg} alt="cano"/>
     <img ref={playerRef} className={playerClassName} src={playerImage} alt="player"/>

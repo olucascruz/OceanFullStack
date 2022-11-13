@@ -3,9 +3,8 @@
     top: 5%;
     right: 0;
     left: 0;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    width: calc(70% -1rem -1rem);
+    margin: auto;
+    width: 40%;
     height: calc(90% -1rem -1rem);
 
     background-color: white;

@@ -42,11 +42,16 @@ async function main(){
 
     //Endpoint CREATE - [POST] /pontuacoes
     app.post("/pontuacoes", async function(req, res){
-      const item = req.body;
-      
-      await collection.insertOne(item);
+      try{
+        const item = req.body;
+        if(item.name){
+          await collection.insertOne(item);
+        }
 
-      res.send(item)
+        res.status(201).send(item);
+      }catch(error){
+        res.status(500);  
+      }
     });
 
     //Endpoint DELETE - [POST] /pontuacoes

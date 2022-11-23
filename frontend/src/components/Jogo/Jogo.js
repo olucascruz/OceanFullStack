@@ -14,6 +14,8 @@ function Jogo(props){
     const [estaPulando, setEstaPulando] = useState(false);
     const [pontos, setPontos] = useState(0);
     const [estaMorto, setEstaMorto] = useState(false);
+
+    const [start, setStart] = useState(false);
     let playerClassName = "player";
 
 
@@ -40,9 +42,9 @@ function Jogo(props){
             if(!colisaoCano || estaMorto){
                 return;
             }
-
+            setStart(false);
             setEstaMorto(true);
-            props.onDie()
+            props.onDie();
 
         }, 100);
 
@@ -53,7 +55,7 @@ function Jogo(props){
 
     useEffect(()=>{
        const interval = setInterval(()=>{
-            if(estaMorto){
+            if(estaMorto || !start){
                 return;
             }
             setPontos(pontos + 1);
@@ -61,10 +63,14 @@ function Jogo(props){
         }, 500);
 
         return ()=> clearInterval(interval);
-    }, [estaMorto, pontos, props])
+    }, [estaMorto, pontos, props, start])
     
-    document.onkeydown = function(){
-        if(!estaPulando && !estaMorto){
+    document.onkeydown = function(e){
+        console.log(e);
+        if(e.code === 'Space' && !start){
+            setStart(true);
+        }
+        if(e.code === 'Space' && !estaPulando && start){
             setEstaPulando(true);
         }
        
@@ -78,16 +84,19 @@ function Jogo(props){
      }
 
      const playerImage = estaMorto ? gameOverimg : playerimg;
-     const pararAnimacao = estaMorto? "parar-animacao" : "";
+     const pararAnimacao = start? "" : "parar-animacao";
 
     return <div className="jogo"> 
 
     <span>{"Pontos: "+pontos}</span>
 
     <img className={"nuvens "+pararAnimacao} src={cloudsimg} alt="nuvens"/>
-
+    {!start && <h2> Aperte 'pause' para começar</h2>}
     <img ref={canoRef} className={"cano "+pararAnimacao} src={pipeimg} alt="cano"/>
-    <img ref={playerRef} className={playerClassName} src={playerImage} alt="player"/>
+    {start && 
+    <img ref={playerRef} className={playerClassName} src={playerImage} alt="player"/>}
+    {estaMorto &&
+    <img ref={playerRef} className={playerClassName} src={playerImage} alt="player"/>}
 
     <div className="chao"></div>
     </div>;

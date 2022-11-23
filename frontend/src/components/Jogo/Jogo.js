@@ -66,7 +66,6 @@ function Jogo(props){
     }, [estaMorto, pontos, props, start])
     
     document.onkeydown = function(e){
-        console.log(e);
         if(e.code === 'Space' && !start && !estaMorto){
             setStart(true);
         }
@@ -88,7 +87,9 @@ function Jogo(props){
         playerClassName = "player player-pulo";
         setTimeout(()=>{
             setEstaPulando(false);
-        }, 700);
+    
+        }, 750);
+
      }
 
      const playerImage = estaMorto ? gameOverimg : playerimg;
@@ -99,7 +100,7 @@ function Jogo(props){
     <span>{"Pontos: "+pontos}</span>
 
     <img className={"nuvens "+pararAnimacao} src={cloudsimg} alt="nuvens"/>
-    {!start && <h2> Aperte 'pause' ou click na tela para começar</h2>}
+    {!start && !estaMorto && <h2> Aperte 'pause' ou click na tela para começar</h2>}
     <img ref={canoRef} className={"cano "+pararAnimacao} src={pipeimg} alt="cano"/>
     {start && 
     <img ref={playerRef} className={playerClassName} src={playerImage} alt="player"/>}

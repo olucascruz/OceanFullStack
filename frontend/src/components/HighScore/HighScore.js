@@ -16,14 +16,12 @@ function HighScore(props){
         const body = await response.json();
     
         setItens(body)
-        console.log(body)
-
     }
   
     carregarPontuacoes()
         
     },[]);
-    console.log(itens);
+
 
     const itensEstaoCarregando = itens === undefined;
 
@@ -49,7 +47,7 @@ function HighScore(props){
 
         const body = await response.json();
 
-        console.log(body)
+        
         document.location.reload(true);
     }
 

@@ -20,7 +20,7 @@
 .player{
     height: 10vh;
     position: absolute;
-    bottom: 30px;
+    bottom: 60px;
     left: 50px;
 }
 
@@ -30,22 +30,22 @@
 
 @keyframes player-pulo{
     from{
-        bottom: 30px;
+        bottom: 60px;
     }
     
     50%{
-        bottom: 120px;
+        bottom: 150px;
     }
 
     to{
-        bottom: 30px;
+        bottom: 60px;
     }
 }
 
 .cano{
     width: 6vh;
     position: absolute;
-    bottom: 30px;
+    bottom: 60px;
     right: 50px;
 
     animation-name: mover-direita-para-esquerda;
@@ -69,9 +69,9 @@
 .chao{
     position: absolute;
     bottom: 0px;
-    height: 30px;
+    height: 60px;
     width: 100%;
    
-    background: linear-gradient(limegreen 10%, #654321 90%);
+    background: linear-gradient(limegreen 10%, #654321 40%);
 
 }

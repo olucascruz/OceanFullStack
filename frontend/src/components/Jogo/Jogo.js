@@ -67,7 +67,7 @@ function Jogo(props){
     
     document.onkeydown = function(e){
         console.log(e);
-        if(e.code === 'Space' && !start){
+        if(e.code === 'Space' && !start && !estaMorto){
             setStart(true);
         }
         if(e.code === 'Space' && !estaPulando && start){
@@ -75,6 +75,14 @@ function Jogo(props){
         }
        
     };
+    document.onmousedown = function(e){
+        if(!start && !estaMorto){
+            setStart(true);
+        }
+        if(!estaPulando && start){
+            setEstaPulando(true);
+        }
+    }
     
     if(estaPulando){
         playerClassName = "player player-pulo";
@@ -91,7 +99,7 @@ function Jogo(props){
     <span>{"Pontos: "+pontos}</span>
 
     <img className={"nuvens "+pararAnimacao} src={cloudsimg} alt="nuvens"/>
-    {!start && <h2> Aperte 'pause' para começar</h2>}
+    {!start && <h2> Aperte 'pause' ou click na tela para começar</h2>}
     <img ref={canoRef} className={"cano "+pararAnimacao} src={pipeimg} alt="cano"/>
     {start && 
     <img ref={playerRef} className={playerClassName} src={playerImage} alt="player"/>}

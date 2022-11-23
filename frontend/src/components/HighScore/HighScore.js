@@ -5,7 +5,8 @@ import "./HighScore.css"
 
 function HighScore(props){
 
-    const [itens, setItens] = useState(undefined)
+    const [itens, setItens] = useState(undefined);
+    const [error, setError] = useState('');
     useEffect(()=>{
     async function carregarPontuacoes(){
     //   Faz requisição e recebe a resposta
@@ -31,6 +32,12 @@ function HighScore(props){
 
         const form = event.target;
         const name = form.name.value;
+
+        if(!name){
+            setError("campo necessário");
+            return;
+        }  
+
 
         const response = await fetch("https://api-ranking.onrender.com/pontuacoes", {
             method: "POST",
@@ -61,6 +68,8 @@ function HighScore(props){
             <form onSubmit={salvarPontuacao}>
                  <input type="text" name="name" placeholder="Digite o seu nome..." />
                  <input type="submit" value="Enviar" />
+                 <br/>
+                 <span className="warning">{error}</span>
             </form>
         </div>
     </div>

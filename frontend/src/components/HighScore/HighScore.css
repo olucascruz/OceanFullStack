@@ -10,3 +10,8 @@
     background-color: white;
     padding: 1rem;
 }
+
+.warning{
+    color: red;
+    font-size: .8rem;
+}

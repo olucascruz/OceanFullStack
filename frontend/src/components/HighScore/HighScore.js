@@ -64,7 +64,7 @@ function HighScore(props){
         <div>
             <h2>Registre sua pontuação!</h2>
             <form onSubmit={salvarPontuacao}>
-                 <input type="text" name="name" placeholder="Digite o seu nome..." />
+                 <input className="inputName" type="text" name="name" placeholder="Digite o seu nome..." />
                  <input type="submit" value="Enviar" />
                  <br/>
                  <span className="warning">{error}</span>

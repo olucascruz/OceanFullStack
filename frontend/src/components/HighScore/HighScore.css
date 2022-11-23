@@ -11,6 +11,9 @@
     padding: 1rem;
 }
 
+.inputName{
+    width: 50%;
+}
 .warning{
     color: red;
     font-size: .8rem;
